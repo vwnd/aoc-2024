@@ -61,5 +61,34 @@ pub fn solve() {
 
     // calculate the sum of the differences
     let sum: i32 = differences.iter().sum();
-    println!("Solution - Sum: {}", sum);
+    println!("Solution Part 1 - Sum: {}", sum);
+
+    // create a new array to store similarity scores
+    let mut similarity_scores = Vec::new();
+
+    // iterate through the left and right ID's and calculate the similarity scores
+    for i in 0..left_ids.len() {
+        let left_id = &left_ids[i];
+
+        // cast the left ID to i32
+        let left_id: i32 = left_id.parse().unwrap();
+
+        // count how many times left it appears in the right ids array
+        let number_of_occurrences = right_ids
+            .iter()
+            .filter(|&id| id == &left_id.to_string())
+            .count();
+
+        // calculate the similarity score as mutliplication of the left ID and the number of occurrences
+        let similarity_score = left_id * number_of_occurrences as i32;
+
+        // push the similarity score into the similarity scores array
+        similarity_scores.push(similarity_score);
+    }
+
+    // calculate the sum of the similarity scores
+    let sum: i32 = similarity_scores.iter().sum();
+
+    // print the solution to the console
+    println!("Solution Part 2 - Sum Similarity Score: {}", sum);
 }
