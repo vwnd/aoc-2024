@@ -37,6 +37,18 @@ fn has_low_variance(report: &Vec<i32>) -> bool {
     return true;
 }
 
+fn passes_problem_dampener(report: &Vec<i32>) -> bool {
+    for i in 0..report.len() {
+        let mut temp = report.clone();
+        temp.remove(i);
+        if is_all_incresing_or_decresing(&temp) && has_low_variance(&temp) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 pub fn solve() {
     println!("Day 2");
 
@@ -53,6 +65,8 @@ pub fn solve() {
 
     for report in reports {
         if is_all_incresing_or_decresing(&report) && has_low_variance(&report) {
+            safe_reports += 1;
+        } else if passes_problem_dampener(&report) {
             safe_reports += 1;
         }
     }
