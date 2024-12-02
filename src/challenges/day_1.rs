@@ -1,12 +1,4 @@
-use std::fs::read_to_string;
-
-fn read_lines(path: &str) -> Vec<String> {
-    read_to_string(path)
-        .unwrap()
-        .lines()
-        .map(String::from)
-        .collect()
-}
+use crate::challenges::utils::read_lines;
 
 pub fn solve() {
     // print the solution to the console
