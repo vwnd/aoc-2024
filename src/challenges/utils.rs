@@ -7,3 +7,7 @@ pub fn read_lines(path: &str) -> Vec<String> {
         .map(String::from)
         .collect()
 }
+
+pub fn read_file(path: &str) -> String {
+    read_to_string(path).unwrap()
+}
